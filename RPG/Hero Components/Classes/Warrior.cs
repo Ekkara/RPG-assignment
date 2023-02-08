@@ -16,5 +16,10 @@ namespace RPG.Hero_Components
             validWeapons = new[] { WeaponType.Axes, WeaponType.Hammers, WeaponType.Swords };
             validArmor = new[] { ArmorType.Mail, ArmorType.Plate };
         }
+        public override double GetDamage()
+        {
+            return ((equipments[EquipmentSlot.Weapon] == null ? 1 : (equipments[EquipmentSlot.Weapon] as Weapon).damage) *
+                (1 + (currentAttribute.strength / 100)));
+        }
     }
 }

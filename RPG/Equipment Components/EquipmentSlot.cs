@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace RPG
 {
-    public class Equipment
+    public enum EquipmentSlot
     {
-        public EquipmentSlot Slot { get; set; }
+        Weapon,
+        Head,
+        Body,
+        Legs
     }
 }

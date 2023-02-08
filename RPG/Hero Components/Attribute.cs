@@ -16,6 +16,12 @@
             this.dexterity = dexterity;
             this.intelligence = intelligence;
         }
+        public Attribute(Attribute attribute)
+        {
+            this.strength = attribute.strength;
+            this.dexterity = attribute.dexterity;
+            this.intelligence = attribute.intelligence;
+        }
 
         //costum operators for easier use of atributes
         public static Attribute operator +(Attribute a1, Attribute a2)
@@ -25,6 +31,13 @@
                 a1.dexterity + a2.dexterity,
                 a1.intelligence + a2.intelligence);
         }
+        public static Attribute operator +(Attribute a1, int i1)
+        {
+            return new Attribute(
+                a1.strength + i1,
+                a1.dexterity + i1,
+                a1.intelligence + i1);
+        }
 
         public static Attribute operator -(Attribute a1, Attribute a2)
         {
@@ -33,6 +46,15 @@
                   a1.dexterity - a2.dexterity,
                   a1.intelligence - a2.intelligence);
         }
+
+        public static Attribute operator -(Attribute a1, int i1)
+        {
+            return new Attribute(
+                a1.strength - i1,
+                a1.dexterity - i1,
+                a1.intelligence - i1);
+        }
+
 
         public int TotalLevel() { 
         return strength + dexterity + intelligence;
