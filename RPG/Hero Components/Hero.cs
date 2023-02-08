@@ -27,12 +27,28 @@ namespace RPG
             return currentAttribute.TotalLevel();
         }
 
-        public Dictionary<EquipmentSlot, Equipment> equipments{ get; private set; } = new();
+        public Dictionary<EquipmentSlot, Armor> armor{ get; private set; } = new();
         public Weapon equpiedWeapon { get; private set; }
         public void Equip(Equipment equipment)
         {
-            //TODO: add requirements 
-            equipments.Add(equipment.Slot, equipment);   
+            if (equipment.requiredLevel > level) {
+                Console.WriteLine("Too low level to equip this item");
+                return;
+            }
+            if(equipment.requredAttributeLevel > currentAttribute) {
+                Console.WriteLine("Too low attribute levels to equip this item!");
+                return;
+            }
+
+            if(equipment.Slot == EquipmentSlot.Weapon)
+            {   
+                if((equipment as Weapon).)
+                equpiedWeapon = equipment as Weapon;
+            }
+            else
+            {
+                armor.Add(equipment.Slot, equipment as Armor);
+            }
         }
         public WeaponType[] validWeapons { get; protected set; }
         public abstract double GetDamage();
@@ -41,9 +57,9 @@ namespace RPG
         {
             int totalArmorAmplifier = 0;
 
-            for (int index = 0; index < equipments.Count; index++)
+            for (int index = 0; index < armor.Count; index++)
             {
-                KeyValuePair<EquipmentSlot, Equipment> item = equipments.ElementAt(index);
+                KeyValuePair<EquipmentSlot, Equipment> item = armor.ElementAt(index);
                 if(item.Key != EquipmentSlot.Weapon) //do i need to check? can't i just try and cast if it doesn't work it is not an armor?
                 {
                     if (item.Value == null) continue;

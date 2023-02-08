@@ -8,6 +8,8 @@ namespace RPG
 {
     public class Equipment
     {
-        public EquipmentSlot Slot { get; set; }
+        public int requiredLevel { get; set; }
+        public Attribute requredAttributeLevel { get; set; }
+        public EquipmentSlot Slot { get; private set; }
     }
 }

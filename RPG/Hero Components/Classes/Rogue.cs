@@ -17,7 +17,7 @@ namespace RPG.Hero_Components
         }
         public override double GetDamage()
         {
-            return ((equipments[EquipmentSlot.Weapon] == null ? 1 : (equipments[EquipmentSlot.Weapon] as Weapon).damage) *
+            return ((armor[EquipmentSlot.Weapon] == null ? 1 : (armor[EquipmentSlot.Weapon] as Weapon).damage) *
                 (1 + (currentAttribute.dexterity / 100)));
         }
     }

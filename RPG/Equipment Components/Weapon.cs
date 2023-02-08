@@ -8,11 +8,13 @@ namespace RPG.Equipment_Components
 {
     public class Weapon : Equipment
     {
-        public Weapon(double damage)
+        public Weapon(int damage, WeaponType weaponType)
         {
             this.damage = damage;
+            this.weaponType = weaponType;
         }
 
-        public double damage { get; private set; }
+        public int damage { get; private set; }
+        public WeaponType weaponType { get; private set; }
     }
 }

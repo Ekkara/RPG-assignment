@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPG.Equipment_Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,13 @@ namespace RPG
 {
     public class Armor : Equipment
     {
-        public int deffenseModifier { get; private set; }
-        public Armor(int deffenseModifier)
+        public Armor(int deffenseModifier, ArmorType armorType)
         {
             this.deffenseModifier = deffenseModifier;
+            this.armorType = armorType;
         }
+
+        public int deffenseModifier { get; private set; }
+        public ArmorType armorType { get; private set; }
     }
 }
