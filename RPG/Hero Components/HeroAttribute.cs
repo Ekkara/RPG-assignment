@@ -1,22 +1,32 @@
-﻿namespace RPG
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RPG.Hero_Components
 {
-    //i could have used an int vector but this is clearer and more scalable
-    public struct Attribute
+    public struct HeroAttribute
     {
         //variables
-        public int strength = 0;
-        public int dexterity = 0;
-        public int intelligence = 0;
+        public int strength { get; private set; }
+        public int dexterity { get; private set; }
+        public int intelligence { get; private set; }
 
         //constructors to make an attribute
-        public Attribute() { }
-        public Attribute(int strength, int dexterity, int intelligence)
+        public HeroAttribute()
+        {
+            this.strength = 0;
+            this.dexterity = 0;
+            this.intelligence = 0;
+        }
+        public HeroAttribute(int strength, int dexterity, int intelligence)
         {
             this.strength = strength;
             this.dexterity = dexterity;
             this.intelligence = intelligence;
         }
-        public Attribute(Attribute attribute)
+        public HeroAttribute(HeroAttribute attribute)
         {
             this.strength = attribute.strength;
             this.dexterity = attribute.dexterity;
@@ -24,52 +34,52 @@
         }
 
         //costum operators for easier use of atributes
-        public static Attribute operator +(Attribute a1, Attribute a2)
+        public static HeroAttribute operator +(HeroAttribute a1, HeroAttribute a2)
         {
-            return new Attribute(
+            return new HeroAttribute(
                 a1.strength + a2.strength,
                 a1.dexterity + a2.dexterity,
                 a1.intelligence + a2.intelligence);
         }
-        public static Attribute operator +(Attribute a1, int i1)
+        public static HeroAttribute operator +(HeroAttribute a1, int i1)
         {
-            return new Attribute(
+            return new HeroAttribute(
                 a1.strength + i1,
                 a1.dexterity + i1,
                 a1.intelligence + i1);
         }
 
-        public static Attribute operator -(Attribute a1, Attribute a2)
+        public static HeroAttribute operator -(HeroAttribute a1, HeroAttribute a2)
         {
-            return new Attribute(
+            return new HeroAttribute(
                   a1.strength - a2.strength,
                   a1.dexterity - a2.dexterity,
                   a1.intelligence - a2.intelligence);
         }
 
-        public static Attribute operator -(Attribute a1, int i1)
+        public static HeroAttribute operator -(HeroAttribute a1, int i1)
         {
-            return new Attribute(
+            return new HeroAttribute(
                 a1.strength - i1,
                 a1.dexterity - i1,
                 a1.intelligence - i1);
         }
-        public static bool operator < (Attribute a1, Attribute a2)
+        public static bool operator <(HeroAttribute a1, HeroAttribute a2)
         {
             return a1.strength < a2.strength &&
                 a1.dexterity < a2.dexterity &&
                 a1.intelligence < a2.intelligence;
         }
-        public static bool operator > (Attribute a1, Attribute a2)
+        public static bool operator >(HeroAttribute a1, HeroAttribute a2)
         {
             return a1.strength > a2.strength &&
                  a1.dexterity > a2.dexterity &&
                  a1.intelligence > a2.intelligence;
         }
 
-
-        public int TotalLevel() { 
-        return strength + dexterity + intelligence;
+        public int TotalLevel()
+        {
+            return strength + dexterity + intelligence;
         }
 
         public override string ToString()

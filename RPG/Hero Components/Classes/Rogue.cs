@@ -13,12 +13,12 @@ namespace RPG.Hero_Components
             currentAttribute = new(strength: 2, dexterity: 6, intelligence: 1); 
             increaseAttribute = new(strength: 1, dexterity: 4, intelligence: 1);
             validWeapons = new[] { WeaponType.Daggers, WeaponType.Swords };
-            validArmor = new[] { ArmorType.Leather, ArmorType.Mail };
+            validArmors = new[] { ArmorType.Leather, ArmorType.Mail };
         }
         public override double GetDamage()
         {
-            return ((armor[EquipmentSlot.Weapon] == null ? 1 : (armor[EquipmentSlot.Weapon] as Weapon).damage) *
-                (1 + (currentAttribute.dexterity / 100)));
+            return Math.Round((equippedWeapon == null ? 1 : equippedWeapon.damage) * 
+                (1 + ((double)currentAttribute.dexterity / 100)), 2);
         }
     }
 }

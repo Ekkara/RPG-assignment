@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPG.Hero_Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace RPG
 {
     public class Equipment
     {
-        public int requiredLevel { get; set; }
-        public Attribute requredAttributeLevel { get; set; }
-        public EquipmentSlot Slot { get; private set; }
+        public int requiredLevel { get; protected set; }
+        public HeroAttribute requredAttributeLevel { get; protected set; }
+        public EquipmentSlot slot { get; protected set; }
     }
 }
