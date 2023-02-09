@@ -36,10 +36,15 @@ namespace RPG.Hero_Components
         //costum operators for easier use of atributes
         public static HeroAttribute operator +(HeroAttribute a1, HeroAttribute a2)
         {
-            return new HeroAttribute(
-                a1.strength + a2.strength,
-                a1.dexterity + a2.dexterity,
-                a1.intelligence + a2.intelligence);
+            a1.strength += a2.strength;
+            a1.dexterity += a2.dexterity;
+            a1.intelligence += a2.intelligence;
+            return a1;
+        //    return new HeroAttribute(
+        //        a1.strength + a2.strength,
+        //        a1.dexterity + a2.dexterity,
+        //        a1.intelligence + a2.intelligence);
+        //
         }
         public static HeroAttribute operator +(HeroAttribute a1, int i1)
         {
@@ -72,14 +77,9 @@ namespace RPG.Hero_Components
         }
         public static bool operator >(HeroAttribute a1, HeroAttribute a2)
         {
-            return a1.strength > a2.strength &&
+            return (a1.strength > a2.strength &&
                  a1.dexterity > a2.dexterity &&
-                 a1.intelligence > a2.intelligence;
-        }
-
-        public int TotalLevel()
-        {
-            return strength + dexterity + intelligence;
+                 a1.intelligence > a2.intelligence);
         }
 
         public override string ToString()

@@ -23,10 +23,7 @@ namespace RPG
 
         protected HeroAttribute increaseAttribute;
         public HeroAttribute currentAttribute { get; protected set; }
-        public int GetTotalLevelAttributes()
-        {
-            return currentAttribute.TotalLevel();
-        }
+   
 
         public Dictionary<EquipmentSlot, Armor> equippedArmor { get; private set; } = new();
         public Weapon equippedWeapon { get; private set; }
@@ -37,7 +34,7 @@ namespace RPG
                 Console.WriteLine("Too low level to equip this item");
                 return;
             }
-            if (equipment.requredAttributeLevel > currentAttribute)
+            if (equipment.requiredAttributeLevel > currentAttribute)
             {
                 Console.WriteLine("Too low attribute levels to equip this item!");
                 return;

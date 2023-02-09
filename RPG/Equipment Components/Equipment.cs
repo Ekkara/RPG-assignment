@@ -10,7 +10,7 @@ namespace RPG
     public class Equipment
     {
         public int requiredLevel { get; protected set; }
-        public HeroAttribute requredAttributeLevel { get; protected set; }
+        public HeroAttribute requiredAttributeLevel { get; protected set; }
         public EquipmentSlot slot { get; protected set; }
     }
 }
