@@ -13,75 +13,70 @@ namespace RPG
     {
         protected Hero(string name)
         {
-            this.name = name;
-            level = 1;
+            this.Name = name;
+            Level = 1;
         }
         //common variables 
-        public string name { get; private set; }
-        public int level { get; private set; }
+        public string Name { get; private set; }
+        public int Level { get; private set; }
 
 
         protected HeroAttribute increaseAttribute;
-        public HeroAttribute currentAttribute { get; protected set; }
+        public HeroAttribute CurrentAttribute { get; protected set; }
    
 
-        public Dictionary<EquipmentSlot, Armor> equippedArmor { get; private set; } = new();
-        public Weapon equippedWeapon { get; private set; }
+        public Dictionary<EquipmentSlot, Armor> EquippedArmor { get; private set; } = new();
+        public Weapon EquippedWeapon { get; private set; }
+        
         public void Equip(Equipment equipment)
         {
-            if (equipment.requiredLevel > level)
+            if (equipment.RequiredLevel > Level)
             {
                 Console.WriteLine("Too low level to equip this item");
                 return;
             }
-            if (equipment.requiredAttributeLevel > currentAttribute)
+            if (equipment.Slot == EquipmentSlot.Weapon)
             {
-                Console.WriteLine("Too low attribute levels to equip this item!");
-                return;
-            }
-
-            if (equipment.slot == EquipmentSlot.Weapon)
-            {
-                if (!validWeapons.Contains((equipment as Weapon).weaponType))
+                if (!ValidWeapons.Contains((equipment as Weapon).WeaponType))
                 {
                     Console.WriteLine(GetType().Name + " can't equip this type of weapon");
                     return;
                 }
-                equippedWeapon = equipment as Weapon;
+                EquippedWeapon = equipment as Weapon;
             }
             else
             {
-                if (!validArmors.Contains((equipment as Armor).armorType))
+                if (!ValidArmors.Contains((equipment as Armor).ArmorType))
                 {
                     Console.WriteLine(GetType().Name + " can't equip this type of armor");
                     return;
                 }
-                equippedArmor.Remove(equipment.slot);                
-                equippedArmor.Add(equipment.slot, equipment as Armor);
+                EquippedArmor.Remove(equipment.Slot);
+                EquippedArmor.Add(equipment.Slot, equipment as Armor);
             }
         }
-        public WeaponType[] validWeapons { get; protected set; }
+        public WeaponType[] ValidWeapons { get; protected set; }
         public abstract double GetDamage();
-        public ArmorType[] validArmors { get; protected set; }
+        public ArmorType[] ValidArmors { get; protected set; }
         public HeroAttribute GetTotalAttributes()
         {
             int totalArmorAmplifier = 0;
 
-            for (int index = 0; index < equippedArmor.Count; index++)
+            for (int index = 0; index < EquippedArmor.Count; index++)
             {
-                KeyValuePair<EquipmentSlot, Armor> item = equippedArmor.ElementAt(index);
+                KeyValuePair<EquipmentSlot, Armor> item = EquippedArmor.ElementAt(index);
                 if (item.Value == null) continue;
-                totalArmorAmplifier += item.Value.deffenseModifier;
+                totalArmorAmplifier += item.Value.DeffenseModifier;
             }
-            return new HeroAttribute(currentAttribute + totalArmorAmplifier);
+            return new HeroAttribute(CurrentAttribute + totalArmorAmplifier);
         }
 
         public void LevelUp(int amountOfLevels = 1)
         {
             for (int i = 0; i < amountOfLevels; i++)
             {
-                level++;
-                currentAttribute += increaseAttribute;
+                Level++;
+                CurrentAttribute += increaseAttribute;
             }
         }
 
@@ -91,12 +86,12 @@ namespace RPG
          
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("Name: " + name + '\n');
+            sb.Append("Name: " + Name + '\n');
             sb.Append("Class: " + GetType().Name + '\n');
-            sb.Append("Level:" + level + '\n');
-            sb.Append("Total strength: " + totalAttributes.strength + '\n');
-            sb.Append("Total dexterity " + totalAttributes.dexterity + '\n');
-            sb.Append("Total intelligence " + totalAttributes.intelligence + '\n');
+            sb.Append("Level:" + Level + '\n');
+            sb.Append("Total strength: " + totalAttributes.Strength + '\n');
+            sb.Append("Total dexterity " + totalAttributes.Dexterity + '\n');
+            sb.Append("Total intelligence " + totalAttributes.Intelligence + '\n');
             sb.Append("Damage: " + GetDamage() + '\n');
 
             return sb.ToString();

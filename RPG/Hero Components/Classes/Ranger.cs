@@ -11,16 +11,16 @@ namespace RPG.Hero_Components
     {
         public Ranger(string name) : base(name)
         {
-            currentAttribute = new(strength: 1, dexterity: 7, intelligence: 1);
+            CurrentAttribute = new(strength: 1, dexterity: 7, intelligence: 1);
             increaseAttribute = new(strength: 1, dexterity: 5, intelligence: 1);
-            validWeapons = new[] { WeaponType.Bows };
-            validArmors = new[] { ArmorType.Leather, ArmorType.Mail };
+            ValidWeapons = new[] { WeaponType.Bows };
+            ValidArmors = new[] { ArmorType.Leather, ArmorType.Mail };
 
         }
         public override double GetDamage()
         {
-            return Math.Round((equippedWeapon==null ? 1 : equippedWeapon.damage) *
-                (1 + ((double)currentAttribute.dexterity / 100)),2);
+            return Math.Round((EquippedWeapon==null ? 1 : EquippedWeapon.Damage) *
+                (1 + ((double)CurrentAttribute.Dexterity / 100)),2);
         }
     }
 }

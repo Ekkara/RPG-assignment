@@ -10,15 +10,15 @@ namespace RPG.Hero_Components
     internal class Rogue : Hero
     {
         public Rogue(string name) : base(name) {
-            currentAttribute = new(strength: 2, dexterity: 6, intelligence: 1); 
+            CurrentAttribute = new(strength: 2, dexterity: 6, intelligence: 1); 
             increaseAttribute = new(strength: 1, dexterity: 4, intelligence: 1);
-            validWeapons = new[] { WeaponType.Daggers, WeaponType.Swords };
-            validArmors = new[] { ArmorType.Leather, ArmorType.Mail };
+            ValidWeapons = new[] { WeaponType.Daggers, WeaponType.Swords };
+            ValidArmors = new[] { ArmorType.Leather, ArmorType.Mail };
         }
         public override double GetDamage()
         {
-            return Math.Round((equippedWeapon == null ? 1 : equippedWeapon.damage) * 
-                (1 + ((double)currentAttribute.dexterity / 100)), 2);
+            return Math.Round((EquippedWeapon == null ? 1 : EquippedWeapon.Damage) * 
+                (1 + ((double)CurrentAttribute.Dexterity / 100)), 2);
         }
     }
 }

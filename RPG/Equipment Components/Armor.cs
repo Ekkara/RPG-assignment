@@ -12,13 +12,13 @@ namespace RPG
     {
         public Armor(int deffenseModifier, ArmorType armorType, int requiredLevel, HeroAttribute requiredAttributeLevel, EquipmentSlot slot)
         {
-            this.deffenseModifier = deffenseModifier;
-            this.armorType = armorType;
-            this.slot = slot;
-            this.requiredLevel = requiredLevel;
-            this.requiredAttributeLevel = requiredAttributeLevel;
+            this.DeffenseModifier = deffenseModifier;
+            this.ArmorType = armorType;
+            this.Slot = slot;
+            this.RequiredLevel = requiredLevel;
+            this.RequiredAttributeLevel = requiredAttributeLevel;
         }
-        public int deffenseModifier { get; private set; }
-        public ArmorType armorType { get; private set; }
+        public int DeffenseModifier { get; private set; }
+        public ArmorType ArmorType { get; private set; }
     }
 }

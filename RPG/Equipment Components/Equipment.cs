@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace RPG
 {
-    public class Equipment
+    public abstract class Equipment
     {
-        public int requiredLevel { get; protected set; }
-        public HeroAttribute requiredAttributeLevel { get; protected set; }
-        public EquipmentSlot slot { get; protected set; }
+        public int RequiredLevel { get; protected set; }
+        public HeroAttribute RequiredAttributeLevel { get; protected set; }
+        public EquipmentSlot Slot { get; protected set; }
     }
 }

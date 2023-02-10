@@ -11,14 +11,14 @@ namespace RPG.Equipment_Components
     {
         public Weapon(double damage, int requiredLevel, HeroAttribute requiredAttributeLevel, WeaponType weaponType)
         {
-            this.damage = damage;
-            this.weaponType = weaponType;
-            this.slot = EquipmentSlot.Weapon;
-            this.requiredLevel = requiredLevel;
-            this.requiredAttributeLevel = requiredAttributeLevel;
+            this.Damage = damage;
+            this.WeaponType = weaponType;
+            this.Slot = EquipmentSlot.Weapon;
+            this.RequiredLevel = requiredLevel;
+            this.RequiredAttributeLevel = requiredAttributeLevel;
         }
 
-        public double damage { get; private set; }
-        public WeaponType weaponType { get; private set; }
+        public double Damage { get; private set; }
+        public WeaponType WeaponType { get; private set; }
     }
 }

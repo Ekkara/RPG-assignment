@@ -11,15 +11,15 @@ namespace RPG.Hero_Components
     {
         public Warrior(string name) : base(name) 
         {
-            currentAttribute = new(strength: 5, dexterity: 2, intelligence: 1); 
+            CurrentAttribute = new(strength: 5, dexterity: 2, intelligence: 1); 
             increaseAttribute = new(strength: 3, dexterity: 2, intelligence: 1);
-            validWeapons = new[] { WeaponType.Axes, WeaponType.Hammers, WeaponType.Swords };
-            validArmors = new[] { ArmorType.Mail, ArmorType.Plate };
+            ValidWeapons = new[] { WeaponType.Axes, WeaponType.Hammers, WeaponType.Swords };
+            ValidArmors = new[] { ArmorType.Mail, ArmorType.Plate };
         }
         public override double GetDamage()
         {
-            return Math.Round((equippedWeapon == null ? 1 : equippedWeapon.damage) * 
-                (1 + ((double)currentAttribute.strength / 100)), 2);
+            return Math.Round((EquippedWeapon == null ? 1 : EquippedWeapon.Damage) * 
+                (1 + ((double)CurrentAttribute.Strength / 100)), 2);
         }
     }
 }
