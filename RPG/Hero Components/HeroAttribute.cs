@@ -64,6 +64,17 @@ namespace RPG.Hero_Components
             a1.Intelligence -= i1;
             return a1;
         }
+        public static bool operator ==(HeroAttribute a1, HeroAttribute a2)
+        {
+            return (
+                a1.Strength == a2.Strength &&
+                a1.Dexterity == a2.Dexterity &&
+                a1.Intelligence == a2.Intelligence);
+        }
+        public static bool operator !=(HeroAttribute a1, HeroAttribute a2)
+        {
+            return !(a1 == a2);
+        }
 
         public override string ToString()
         {

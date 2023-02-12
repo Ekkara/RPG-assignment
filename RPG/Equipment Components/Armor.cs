@@ -16,7 +16,11 @@ namespace RPG
             this.ArmorType = armorType;
             this.Slot = slot;
             this.RequiredLevel = requiredLevel;
-            this.RequiredAttributeLevel = requiredAttributeLevel;
+            this.Slot = slot;
+            if(Slot == EquipmentSlot.Weapon)
+            {
+                Console.WriteLine("Not allowed to");
+            }
         }
         public int DeffenseModifier { get; private set; }
         public ArmorType ArmorType { get; private set; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Hero_Components
 {
-    internal class Warrior : Hero
+    public class Warrior : Hero
     {
         public Warrior(string name) : base(name) 
         {

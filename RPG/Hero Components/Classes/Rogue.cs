@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Hero_Components
 {
-    internal class Rogue : Hero
+    public class Rogue : Hero
     {
         public Rogue(string name) : base(name) {
             CurrentAttribute = new(strength: 2, dexterity: 6, intelligence: 1); 
