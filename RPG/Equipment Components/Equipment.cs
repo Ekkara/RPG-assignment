@@ -9,8 +9,15 @@ namespace RPG
 {
     public abstract class Equipment
     {
-        public string Name { get; protected set; } = "[Name not found]";
-        public int RequiredLevel { get; protected set; }
-        public EquipmentSlot Slot { get; protected set; }
+        public Equipment(string name, int requiredLevel, EquipmentSlot slot)
+        {
+            Name = name;
+            RequiredLevel = requiredLevel;
+            Slot = slot;
+        }
+
+        public string Name { get; private set; } = "[Name not found]";
+        public int RequiredLevel { get; private set; }
+        public EquipmentSlot Slot { get; private set; }
     }
 }

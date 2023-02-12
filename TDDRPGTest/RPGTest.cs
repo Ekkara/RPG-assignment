@@ -30,13 +30,43 @@ namespace TDDRPGTest
         {
             //Arrange
             Warrior warrior = new("Mighty Bill");
-            Weapon weapon = new(10, 1, WeaponType.Swords);
+            Weapon weapon = new("Death Sun", 10, 1, WeaponType.Swords);
 
             //Act
             warrior.Equip(weapon);
 
             //Assert            
-            Assert.Equal(warrior.EquippedWeapon?.Name == "");
+            Assert.Equal(warrior.EquippedWeapon?.Name, weapon.Name);
+        }
+
+        [Fact]
+        public void EquipItem_EquipWrongWeapon_ShouldNotEquipItem()
+        {
+            //Arrange
+            Warrior warrior = new("Mighty Bill");
+            Weapon weapon = new("Magical stick", 10, 1, WeaponType.Staffs);
+
+            //Act
+            warrior.Equip(weapon);
+
+            //Assert            
+            Assert.NotEqual(warrior.EquippedWeapon?.Name, weapon.Name);
+        }
+
+        [Fact]
+        public void EquipItem_EquipMultipleWeaponOverride_ShoulOverrideOldWeapon()
+        {
+            //Arrange
+            Mage warrior = new("Collector");
+            Weapon weapon1 = new("Magical stick", 10, 1, WeaponType.Staffs);
+            Weapon weapon2 = new("Better magical stick", 100, 1, WeaponType.Staffs);
+
+            //Act
+            warrior.Equip(weapon1);
+            warrior.Equip(weapon2);
+
+            //Assert            
+            Assert.Equal(warrior.EquippedWeapon?.Name, weapon2.Name);
         }
 
     }

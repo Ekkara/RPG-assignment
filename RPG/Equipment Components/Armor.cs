@@ -10,16 +10,14 @@ namespace RPG
 {
     public class Armor : Equipment
     {
-        public Armor(int deffenseModifier, ArmorType armorType, int requiredLevel, HeroAttribute requiredAttributeLevel, EquipmentSlot slot)
+        public Armor(string name, int deffenseModifier, ArmorType armorType, int requiredLevel, HeroAttribute requiredAttributeLevel, EquipmentSlot slot) :
+            base(name, requiredLevel, slot)
         {
             this.DeffenseModifier = deffenseModifier;
             this.ArmorType = armorType;
-            this.Slot = slot;
-            this.RequiredLevel = requiredLevel;
-            this.Slot = slot;
             if(Slot == EquipmentSlot.Weapon)
             {
-                Console.WriteLine("Not allowed to");
+                Console.WriteLine("Not allowed to be set as a weapon");
             }
         }
         public int DeffenseModifier { get; private set; }

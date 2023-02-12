@@ -9,11 +9,11 @@ namespace RPG.Equipment_Components
 {
     public class Weapon : Equipment
     {
-        public Weapon(double damage, int requiredLevel, WeaponType weaponType)
+        public Weapon(string name, double damage, int requiredLevel, WeaponType weaponType) : 
+            base(name, requiredLevel, EquipmentSlot.Weapon)
         {
             this.Damage = damage;
             this.WeaponType = weaponType;
-            this.Slot = EquipmentSlot.Weapon;
             this.RequiredLevel = requiredLevel;
         }
 
