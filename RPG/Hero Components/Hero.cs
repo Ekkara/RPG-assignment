@@ -36,12 +36,17 @@ namespace RPG
             if (weaponToEquip.RequiredLevel > Level)
             {
                 throw new InvalidWeaponException("Too low level to equip this weapon");
+                //return;
             }
             else if (!ValidWeapons.Contains(weaponToEquip.WeaponType))
             {
                 throw new InvalidWeaponException(GetType().Name + " can't equip this type of weapon");
+                //return;
             }
-            EquippedWeapon = weaponToEquip;
+            else
+            {
+                EquippedWeapon = weaponToEquip;
+            }
         }
         public void Equip(Armor armorToEquip)
         {
@@ -49,12 +54,12 @@ namespace RPG
             {
                 throw new InvalidArmorException("Too low level to equip this armor");
             }
-            else if (!ValidArmors.Contains((armorToEquip as Armor).ArmorType))
+            else if (!ValidArmors.Contains(armorToEquip.ArmorType))
             {
                 throw new InvalidArmorException(GetType().Name + " can't equip this type of armor");
             }
             EquippedArmor.Remove(armorToEquip.Slot);
-            EquippedArmor.Add(armorToEquip.Slot, armorToEquip as Armor);
+            EquippedArmor.Add(armorToEquip.Slot, armorToEquip);
         }
         public abstract double GetDamage();
         public HeroAttribute GetTotalAttributes()

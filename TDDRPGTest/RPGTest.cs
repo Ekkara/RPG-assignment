@@ -1,3 +1,4 @@
+using RPG.Custom_Exceptions;
 using RPG.Equipment_Components;
 using RPG.Hero_Components;
 
@@ -46,11 +47,19 @@ namespace TDDRPGTest
             Warrior warrior = new("Mighty Bill");
             Weapon weapon = new("Magical stick", 10, 1, WeaponType.Staffs);
 
-            //Act
-            warrior.Equip(weapon);
+            //Act 
+
+            //uses a try as an exception is exepcted, and will cause the test to fail
+            //with a try it will continue as usuall
+            try
+            {
+                warrior.Equip(weapon);
+            }
+            catch{}
 
             //Assert            
-            Assert.NotEqual(warrior.EquippedWeapon?.Name, weapon.Name);
+            bool equipedWeapon = warrior.EquippedWeapon?.Name == weapon.Name;
+            Assert.Equal(equipedWeapon, false);
         }
 
         [Fact]
