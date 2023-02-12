@@ -25,42 +25,38 @@ namespace RPG
 
         protected HeroAttribute increaseAttribute;
         public HeroAttribute CurrentAttribute { get; protected set; }
-   
+        public WeaponType[] ValidWeapons { get; protected set; }
+        public ArmorType[] ValidArmors { get; protected set; }
 
         public Dictionary<EquipmentSlot, Armor> EquippedArmor { get; private set; } = new();
         public Weapon EquippedWeapon { get; private set; }
-        
-        public void Equip(Equipment equipment)
+
+        public void Equip(Weapon weaponToEquip)
         {
-            if (equipment.Slot == EquipmentSlot.Weapon)
+            if (weaponToEquip.RequiredLevel > Level)
             {
-                if (equipment.RequiredLevel > Level)
-                {
-                    throw new InvalidWeaponException("Too low level to equip this weapon");
-                }
-                else if (!ValidWeapons.Contains((equipment as Weapon).WeaponType))
-                {
-                    throw new InvalidWeaponException(GetType().Name + " can't equip this type of weapon");
-                }
-                EquippedWeapon = equipment as Weapon;
+                throw new InvalidWeaponException("Too low level to equip this weapon");
             }
-            else
+            else if (!ValidWeapons.Contains(weaponToEquip.WeaponType))
             {
-                if (equipment.RequiredLevel > Level)
-                {
-                    throw new InvalidArmorException("Too low level to equip this armor");
-                }
-                else if (!ValidArmors.Contains((equipment as Armor).ArmorType))
-                {
-                    throw new InvalidArmorException(GetType().Name + " can't equip this type of armor");
-                }
-                EquippedArmor.Remove(equipment.Slot);
-                EquippedArmor.Add(equipment.Slot, equipment as Armor);
+                throw new InvalidWeaponException(GetType().Name + " can't equip this type of weapon");
             }
+            EquippedWeapon = weaponToEquip;
         }
-        public WeaponType[] ValidWeapons { get; protected set; }
+        public void Equip(Armor armorToEquip)
+        {
+            if (armorToEquip.RequiredLevel > Level)
+            {
+                throw new InvalidArmorException("Too low level to equip this armor");
+            }
+            else if (!ValidArmors.Contains((armorToEquip as Armor).ArmorType))
+            {
+                throw new InvalidArmorException(GetType().Name + " can't equip this type of armor");
+            }
+            EquippedArmor.Remove(armorToEquip.Slot);
+            EquippedArmor.Add(armorToEquip.Slot, armorToEquip as Armor);
+        }
         public abstract double GetDamage();
-        public ArmorType[] ValidArmors { get; protected set; }
         public HeroAttribute GetTotalAttributes()
         {
             int totalArmorAmplifier = 0;
@@ -86,7 +82,7 @@ namespace RPG
         public string DisplayState()
         {
             HeroAttribute totalAttributes = GetTotalAttributes();
-         
+
             StringBuilder sb = new StringBuilder();
 
             sb.Append("Name: " + Name + '\n');
