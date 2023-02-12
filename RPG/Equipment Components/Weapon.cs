@@ -14,7 +14,6 @@ namespace RPG.Equipment_Components
         {
             this.Damage = damage;
             this.WeaponType = weaponType;
-            this.RequiredLevel = requiredLevel;
         }
 
         public double Damage { get; private set; }

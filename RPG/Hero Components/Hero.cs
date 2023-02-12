@@ -1,9 +1,11 @@
-﻿using RPG.Equipment_Components;
+﻿using RPG.Custom_Exceptions;
+using RPG.Equipment_Components;
 using RPG.Hero_Components;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,26 +32,27 @@ namespace RPG
         
         public void Equip(Equipment equipment)
         {
-            if (equipment.RequiredLevel > Level)
-            {
-                Console.WriteLine("Too low level to equip this item");
-                return;
-            }
             if (equipment.Slot == EquipmentSlot.Weapon)
             {
-                if (!ValidWeapons.Contains((equipment as Weapon).WeaponType))
+                if (equipment.RequiredLevel > Level)
                 {
-                    Console.WriteLine(GetType().Name + " can't equip this type of weapon");
-                    return;
+                    throw new InvalidWeaponException("Too low level to equip this weapon");
+                }
+                else if (!ValidWeapons.Contains((equipment as Weapon).WeaponType))
+                {
+                    throw new InvalidWeaponException(GetType().Name + " can't equip this type of weapon");
                 }
                 EquippedWeapon = equipment as Weapon;
             }
             else
             {
-                if (!ValidArmors.Contains((equipment as Armor).ArmorType))
+                if (equipment.RequiredLevel > Level)
                 {
-                    Console.WriteLine(GetType().Name + " can't equip this type of armor");
-                    return;
+                    throw new InvalidArmorException("Too low level to equip this armor");
+                }
+                else if (!ValidArmors.Contains((equipment as Armor).ArmorType))
+                {
+                    throw new InvalidArmorException(GetType().Name + " can't equip this type of armor");
                 }
                 EquippedArmor.Remove(equipment.Slot);
                 EquippedArmor.Add(equipment.Slot, equipment as Armor);
