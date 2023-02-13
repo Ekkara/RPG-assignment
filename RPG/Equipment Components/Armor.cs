@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace RPG
 {
-    public class Armor : Equipment
+    public class Armor : Item
     {
-        public Armor(string name, int deffenseModifier, ArmorType armorType, int requiredLevel, HeroAttribute requiredAttributeLevel, EquipmentSlot slot) :
+        public Armor(string name, HeroAttribute attributeModifier, ArmorType armorType, int requiredLevel, HeroAttribute requiredAttributeLevel, EquipmentSlot slot) :
             base(name, requiredLevel, slot)
         {
-            this.DeffenseModifier = deffenseModifier;
             this.ArmorType = armorType;
-            if(Slot == EquipmentSlot.Weapon)
+            if (Slot == EquipmentSlot.Weapon)
             {
                 Console.WriteLine("Not allowed to be set as a weapon");
             }
+            this.AttributeModifier = attributeModifier;
         }
-        public int DeffenseModifier { get; private set; }
         public ArmorType ArmorType { get; private set; }
+        public HeroAttribute AttributeModifier { get; private set; }
     }
 }

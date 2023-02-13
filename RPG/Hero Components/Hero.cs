@@ -31,7 +31,7 @@ namespace RPG
         public Dictionary<EquipmentSlot, Armor> EquippedArmor { get; private set; } = new();
         public Weapon EquippedWeapon { get; private set; }
 
-        public void Equip(Weapon weaponToEquip)
+        public virtual void Equip(Weapon weaponToEquip)
         {
             if (weaponToEquip.RequiredLevel > Level)
             {
@@ -48,7 +48,7 @@ namespace RPG
                 EquippedWeapon = weaponToEquip;
             }
         }
-        public void Equip(Armor armorToEquip)
+        public virtual void Equip(Armor armorToEquip)
         {
             if (armorToEquip.RequiredLevel > Level)
             {
@@ -62,20 +62,19 @@ namespace RPG
             EquippedArmor.Add(armorToEquip.Slot, armorToEquip);
         }
         public abstract double GetDamage();
-        public HeroAttribute GetTotalAttributes()
+        public virtual HeroAttribute GetTotalAttributes()
         {
-            int totalArmorAmplifier = 0;
-
+            HeroAttribute modifier = new();
             for (int index = 0; index < EquippedArmor.Count; index++)
             {
                 KeyValuePair<EquipmentSlot, Armor> item = EquippedArmor.ElementAt(index);
                 if (item.Value == null) continue;
-                totalArmorAmplifier += item.Value.DeffenseModifier;
+                modifier += item.Value.AttributeModifier;
             }
-            return new HeroAttribute(CurrentAttribute + totalArmorAmplifier);
+            return new HeroAttribute(CurrentAttribute + modifier);
         }
 
-        public void LevelUp(int amountOfLevels = 1)
+        public virtual void LevelUp(int amountOfLevels = 1)
         {
             for (int i = 0; i < amountOfLevels; i++)
             {
@@ -84,7 +83,7 @@ namespace RPG
             }
         }
 
-        public string DisplayState()
+        public virtual string DisplayState()
         {
             HeroAttribute totalAttributes = GetTotalAttributes();
 

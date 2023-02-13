@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace RPG
 {
-    public abstract class Equipment
+    public abstract class Item
     {
-        public Equipment(string name, int requiredLevel, EquipmentSlot slot)
+        public Item(string name, int requiredLevel, EquipmentSlot slot)
         {
             Name = name;
             RequiredLevel = requiredLevel;

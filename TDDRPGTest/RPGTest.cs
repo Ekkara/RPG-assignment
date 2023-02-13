@@ -49,8 +49,8 @@ namespace TDDRPGTest
 
             //Act 
 
-            //uses a try as an exception is exepcted, and will cause the test to fail
-            //with a try it will continue as usuall
+            //uses a try as an exception is exepected, and will cause the test to fail
+            //with a try it will continue as usuall, then to see if it was a sucess
             try
             {
                 warrior.Equip(weapon);
@@ -58,12 +58,11 @@ namespace TDDRPGTest
             catch{}
 
             //Assert            
-            bool equipedWeapon = warrior.EquippedWeapon?.Name == weapon.Name;
-            Assert.Equal(equipedWeapon, false);
+            Assert.NotEqual(warrior.EquippedWeapon?.Name, weapon.Name);
         }
 
         [Fact]
-        public void EquipItem_EquipMultipleWeaponOverride_ShoulOverrideOldWeapon()
+        public void EquipItem_EquipMultipleWeapon_ShoulReplaceOldWeapon()
         {
             //Arrange
             Mage warrior = new("Collector");
@@ -77,6 +76,5 @@ namespace TDDRPGTest
             //Assert            
             Assert.Equal(warrior.EquippedWeapon?.Name, weapon2.Name);
         }
-
     }
 }
