@@ -2,8 +2,9 @@
 using RPG.Equipment_Components;
 using RPG.Hero_Components;
 
-Warrior w = new("Babben");
-w.Equip(new Weapon("sticky stick", 10, 1, WeaponType.Swords));
+Mage w = new("Babben");
+w.Equip(new Weapon("s", 1, 1, WeaponType.Staffs));
+//w.Equip(new Weapon("sticky stick", 10, 1, WeaponType.Swords));
 Console.WriteLine(w.DisplayState());
 //Console.WriteLine(m.DisplayState());
 //m.LevelUp();

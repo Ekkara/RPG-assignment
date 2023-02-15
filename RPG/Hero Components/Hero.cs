@@ -36,12 +36,10 @@ namespace RPG
             if (weaponToEquip.RequiredLevel > Level)
             {
                 throw new InvalidWeaponException("Too low level to equip this weapon");
-                //return;
             }
             else if (!ValidWeapons.Contains(weaponToEquip.WeaponType))
             {
                 throw new InvalidWeaponException(GetType().Name + " can't equip this type of weapon");
-                //return;
             }
             else
             {
@@ -91,7 +89,7 @@ namespace RPG
 
             sb.Append("Name: " + Name + '\n');
             sb.Append("Class: " + GetType().Name + '\n');
-            sb.Append("Level:" + Level + '\n');
+            sb.Append("Level: " + Level + '\n');
             sb.Append("Total strength: " + totalAttributes.Strength + '\n');
             sb.Append("Total dexterity " + totalAttributes.Dexterity + '\n');
             sb.Append("Total intelligence " + totalAttributes.Intelligence + '\n');

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Hero_Components
 {
-    internal enum AttributeType
+    public enum AttributeType
     {
         Strength,
         Dextarity,
