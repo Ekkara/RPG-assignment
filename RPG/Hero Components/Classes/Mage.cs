@@ -11,13 +11,14 @@ namespace RPG.Hero_Components
     {
         public Mage(string name) : base(name)
         {
+            //initiate a mage
             CurrentAttribute = new(strength: 1, dexterity: 1, intelligence: 8);
             increaseAttribute = new(strength: 1, dexterity: 1, intelligence: 5);
             ValidWeapons = new[] { WeaponType.Staffs, WeaponType.Wands};
             ValidArmors = new[] { ArmorType.Cloth };
         }
 
-        //override damage function with the mage's   
+        //override damage function with the mage's armor and total attribute of their damage modifier attribute
         public override double GetDamage()
         {
             return Math.Round((EquippedWeapon == null ? 1 : EquippedWeapon.Damage) *

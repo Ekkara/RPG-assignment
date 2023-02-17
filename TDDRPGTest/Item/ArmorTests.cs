@@ -20,7 +20,7 @@ namespace TDDRPGTest.Item
             //Assign-Act-Assert
             Assert.Throws<InvalidArmorException>(() =>
             {
-                Armor armor = new("violent shield", new HeroAttribute(), ArmorType.Leather, 1, EquipmentSlot.Weapon);
+                Armor armor = new("Targe of the Blooded", new HeroAttribute(), ArmorType.Leather, 1, EquipmentSlot.Weapon);
             });
         }
 

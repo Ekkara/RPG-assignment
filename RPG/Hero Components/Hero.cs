@@ -31,8 +31,11 @@ namespace RPG
         public Dictionary<EquipmentSlot, Armor> EquippedArmor { get; private set; } = new();
         public Weapon EquippedWeapon { get; private set; }
 
+        //funtion to try equip a weapon
+
         public virtual void Equip(Weapon weaponToEquip)
         {
+            //failsafe to see if weapon can be equiped
             if (weaponToEquip.RequiredLevel > Level)
             {
                 throw new InvalidWeaponException("Too low level to equip this weapon");
@@ -46,8 +49,11 @@ namespace RPG
                 EquippedWeapon = weaponToEquip;
             }
         }
+
+        //function to try to equip a weapon, same name as the function with weapon for easier use
         public virtual void Equip(Armor armorToEquip)
         {
+            //same failsafe as before
             if (armorToEquip.RequiredLevel > Level)
             {
                 throw new InvalidArmorException("Too low level to equip this armor");
@@ -59,7 +65,11 @@ namespace RPG
             EquippedArmor.Remove(armorToEquip.Slot);
             EquippedArmor.Add(armorToEquip.Slot, armorToEquip);
         }
+
+        //promes all heroes have a function to calculate their damage
         public abstract double GetDamage();
+
+        //calculate total attribute from current attribute (defined by level and class) and armor
         public virtual HeroAttribute GetTotalAttributes()
         {
             HeroAttribute modifier = new();
@@ -72,6 +82,7 @@ namespace RPG
             return new HeroAttribute(CurrentAttribute + modifier);
         }
 
+        //level up x amount of times
         public virtual void LevelUp(int amountOfLevels = 1)
         {
             for (int i = 0; i < amountOfLevels; i++)
@@ -81,6 +92,7 @@ namespace RPG
             }
         }
 
+        //fetch all information in form of a string
         public virtual string DisplayState()
         {
             HeroAttribute totalAttributes = GetTotalAttributes();

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace RPG.Hero_Components
 {
+    //cosutm data type "HeroAtribute" inspired by int vector with clearer name for the purpose of this assignment
     public struct HeroAttribute
     {
-        //variables
+        //get set for the thre attributes 
         public int Strength { get; private set; }
         public int Dexterity { get; private set; }
         public int Intelligence { get; private set; }
@@ -39,7 +40,7 @@ namespace RPG.Hero_Components
             this.Intelligence = attribute.Intelligence;
         }
 
-        //costum operators for easier use of atributes, 
+        //costum add operator to easier use the data type
         public static HeroAttribute operator +(HeroAttribute a1, HeroAttribute a2)
         {
             a1.Strength += a2.Strength;
