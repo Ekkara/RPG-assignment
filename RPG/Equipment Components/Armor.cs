@@ -14,11 +14,13 @@ namespace RPG
         public Armor(string name, HeroAttribute attributeModifier, ArmorType armorType, int requiredLevel, EquipmentSlot slot) :
             base(name, requiredLevel, slot)
         {
-            this.ArmorType = armorType;
+            //prevent any missuse of armor, by trying to assign armor as a weapon
             if (Slot == EquipmentSlot.Weapon)
             {
                 throw new InvalidArmorException("an armor can't be placed in the weapon slot");
             }
+            //assigning variables
+            this.ArmorType = armorType;
             this.AttributeModifier = attributeModifier;
         }
         public ArmorType ArmorType { get; private set; }

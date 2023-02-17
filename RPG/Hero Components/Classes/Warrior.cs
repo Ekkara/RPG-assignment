@@ -19,7 +19,7 @@ namespace RPG.Hero_Components
         public override double GetDamage()
         {
             return Math.Round((EquippedWeapon == null ? 1 : EquippedWeapon.Damage) * 
-                (1 + ((double)CurrentAttribute.Strength / 100)), 2);
+                (1 + ((double)GetTotalAttributes().Strength / 100)), 2);
         }
     }
 }

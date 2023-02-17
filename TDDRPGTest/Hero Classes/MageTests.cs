@@ -32,9 +32,10 @@ namespace TDDRPGTest.Hero_Classes
         {
             //Arrange-Act
             Mage mage = new("");
+            int expectedLevel = 1;
 
             //Assert
-            Assert.Equal(1, mage.Level);
+            Assert.Equal(expectedLevel, mage.Level);
         }
 
         [Theory]
@@ -46,12 +47,10 @@ namespace TDDRPGTest.Hero_Classes
         {
             //Arrange
             Mage mage = new("Steve the dyslexic");
+            int timesLevelingUp = finalLevel - 1;
 
             //Act
-            for (int i = 0; i < finalLevel - 1; i++)
-            {
-                mage.LevelUp();
-            }
+            mage.LevelUp(timesLevelingUp);
 
             //Assert            
             Assert.Equal(mage.CurrentAttribute,
@@ -169,7 +168,7 @@ namespace TDDRPGTest.Hero_Classes
             Armor head = new("", new HeroAttribute(10, 10, 10), ArmorType.Cloth, 1, EquipmentSlot.Head);
             Armor body = new("", new HeroAttribute(10, 10, 10), ArmorType.Cloth, 1, EquipmentSlot.Body);
             Armor legs = new("", new HeroAttribute(10, 10, 10), ArmorType.Cloth, 1, EquipmentSlot.Legs);
-            double expectedDamage = 108;
+            double expectedDamage = 138; //1,08 from base, 1,38 with armor, muliplied with 100 from weapons => 138
             double damageDealt;
 
             //Act
@@ -304,7 +303,7 @@ namespace TDDRPGTest.Hero_Classes
             Mage mage = new("Steve");
             string displayState;
             //state at level 1
-            string realState =
+            string expectedState =
                 "Name: Steve" + '\n' +
                 "Class: Mage" + '\n' +
                 "Level: 1" + '\n' +
@@ -318,7 +317,7 @@ namespace TDDRPGTest.Hero_Classes
 
 
             //Assert
-            Assert.Equal(displayState, realState);
+            Assert.Equal(displayState, expectedState);
         }
         #endregion
     }

@@ -29,9 +29,10 @@ namespace TDDRPGTest.Hero_Classes
         {
             //Arrange-Act
             Rogue rogue = new("");
+            int expectedLevel = 1;
 
             //Assert
-            Assert.Equal(1, rogue.Level);
+            Assert.Equal(expectedLevel, rogue.Level);
         }
 
         [Theory]
@@ -43,12 +44,11 @@ namespace TDDRPGTest.Hero_Classes
         {
             //Arrange
             Rogue rogue = new("");
+            int timesLevelingUp = finalLevel - 1;
 
             //Act
-            for (int i = 0; i < finalLevel - 1; i++)
-            {
-                rogue.LevelUp();
-            }
+            rogue.LevelUp(timesLevelingUp);
+
 
             //Assert            
             Assert.Equal(rogue.CurrentAttribute,
@@ -169,7 +169,7 @@ namespace TDDRPGTest.Hero_Classes
             Armor head = new("", new HeroAttribute(10, 10, 10), ArmorType.Mail, 1, EquipmentSlot.Head);
             Armor body = new("", new HeroAttribute(10, 10, 10), ArmorType.Mail, 1, EquipmentSlot.Body);
             Armor legs = new("", new HeroAttribute(10, 10, 10), ArmorType.Mail, 1, EquipmentSlot.Legs);
-            double expectedDamage = 106;
+            double expectedDamage = 136; //1,06 from base, 1,36 with armor, muliplied with 100 from weapons => 136
             double damageDealt;
 
             //Act
@@ -261,7 +261,7 @@ namespace TDDRPGTest.Hero_Classes
             Armor armor1 = new("one", new HeroAttribute(1, 2, 3), ArmorType.Mail, 1, EquipmentSlot.Head);
             Armor armor2 = new("two", new HeroAttribute(4, 5, 6), ArmorType.Mail, 1, EquipmentSlot.Body);
             Rogue rogue = new("");
-            HeroAttribute expectedAttribute = new(7, 13,10);
+            HeroAttribute expectedAttribute = new(7, 13, 10);
             HeroAttribute actualAttribute;
 
             //act
@@ -303,7 +303,7 @@ namespace TDDRPGTest.Hero_Classes
             Rogue rogue = new("Steve");
             string displayState;
             //state at level 1
-            string realState =
+            string expectedState =
                 "Name: Steve" + '\n' +
                 "Class: Rogue" + '\n' +
                 "Level: 1" + '\n' +
@@ -316,7 +316,7 @@ namespace TDDRPGTest.Hero_Classes
             displayState = rogue.DisplayState();
 
             //Assert
-            Assert.Equal(displayState, realState);
+            Assert.Equal(displayState, expectedState);
         }
         #endregion
     }

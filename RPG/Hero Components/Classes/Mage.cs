@@ -17,10 +17,11 @@ namespace RPG.Hero_Components
             ValidArmors = new[] { ArmorType.Cloth };
         }
 
+        //override damage function with the mage's   
         public override double GetDamage()
         {
             return Math.Round((EquippedWeapon == null ? 1 : EquippedWeapon.Damage) *
-                (1 + (double)CurrentAttribute.Intelligence / 100),2);
+                (1 + (double)GetTotalAttributes().Intelligence / 100),2);
         }
     }
 }

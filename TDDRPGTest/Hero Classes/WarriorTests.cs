@@ -30,9 +30,10 @@ namespace TDDRPGTest.Hero_Classes
         {
             //Arrange-Act
             Warrior warrior = new("");
+            int expectedLevel = 1;
 
             //Assert
-            Assert.Equal(1, warrior.Level);
+            Assert.Equal(expectedLevel, warrior.Level);
         }
 
         [Theory]
@@ -44,12 +45,10 @@ namespace TDDRPGTest.Hero_Classes
         {
             //Arrange
             Warrior warrior = new("");
+            int timesLevelingUp = finalLevel - 1;
 
             //Act
-            for (int i = 0; i < finalLevel - 1; i++)
-            {
-                warrior.LevelUp();
-            }
+            warrior.LevelUp(timesLevelingUp);
 
             //Assert            
             Assert.Equal(warrior.CurrentAttribute,
@@ -169,7 +168,7 @@ namespace TDDRPGTest.Hero_Classes
             Armor head = new("", new HeroAttribute(10, 10, 10), ArmorType.Plate, 1, EquipmentSlot.Head);
             Armor body = new("", new HeroAttribute(10, 10, 10), ArmorType.Plate, 1, EquipmentSlot.Body);
             Armor legs = new("", new HeroAttribute(10, 10, 10), ArmorType.Plate, 1, EquipmentSlot.Legs);
-            double expectedDamage = 105;
+            double expectedDamage = 135; //1,05 from base, 1,35 with armor, muliplied with 100 from weapons => 135
             double damageDealt;
 
             //Act
@@ -303,7 +302,7 @@ namespace TDDRPGTest.Hero_Classes
             Warrior warrior = new("Steve");
             string displayState;
             //state at level 1
-            string realState =
+            string expectedState =
                 "Name: Steve" + '\n' +
                 "Class: Warrior" + '\n' +
                 "Level: 1" + '\n' +
@@ -316,7 +315,7 @@ namespace TDDRPGTest.Hero_Classes
             displayState = warrior.DisplayState();
 
             //Assert
-            Assert.Equal(displayState, realState);
+            Assert.Equal(displayState, expectedState);
         }
         #endregion
     }
