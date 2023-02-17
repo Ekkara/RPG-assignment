@@ -236,7 +236,7 @@ namespace TDDRPGTest.Hero_Classes
         }
         #endregion
 
-        #region attributs
+        #region get attributes tests
         [Fact]
         public void When_GetAttributeWithOneArmor_Expect_AttributeFromBaseAndOneArmor()
         {
@@ -294,7 +294,7 @@ namespace TDDRPGTest.Hero_Classes
         }
         #endregion
 
-        #region display state tests 
+        #region display state test 
 
         [Fact]
         public void DisplayState_DisplayingState_ShouldDisplayState()
