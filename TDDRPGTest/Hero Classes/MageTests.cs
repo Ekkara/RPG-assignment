@@ -2,14 +2,6 @@
 using RPG.Custom_Exceptions;
 using RPG.Equipment_Components;
 using RPG.Hero_Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Xunit;
 
 namespace TDDRPGTest.Hero_Classes
 {

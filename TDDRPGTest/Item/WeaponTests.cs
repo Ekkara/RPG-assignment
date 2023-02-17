@@ -1,13 +1,5 @@
-﻿using RPG.Custom_Exceptions;
-using RPG.Equipment_Components;
-using RPG.Hero_Components;
+﻿using RPG.Equipment_Components;
 using RPG;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace TDDRPGTest.Item
 {

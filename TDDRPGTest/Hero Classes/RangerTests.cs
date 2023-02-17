@@ -2,11 +2,6 @@
 using RPG.Equipment_Components;
 using RPG;
 using RPG.Hero_Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TDDRPGTest.Hero_Classes
 {

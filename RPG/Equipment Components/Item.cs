@@ -1,11 +1,4 @@
-﻿using RPG.Hero_Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RPG
+﻿namespace RPG
 {
     public abstract class Item
     {

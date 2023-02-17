@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RPG.Hero_Components
+﻿namespace RPG.Hero_Components
 {
     //cosutm data type "HeroAtribute" inspired by int vector with clearer name for the purpose of this assignment
     public struct HeroAttribute
